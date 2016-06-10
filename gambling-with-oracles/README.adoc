@@ -1,6 +1,11 @@
 = Gambling with Oracles
 
-Howto create a provably-fair high risk financial product with live data feeds provided by oracles.
+How to create a provably-fair high risk financial product with live data feeds provided by oracles.
+
+:toc:
+:toc-placement!:
+
+toc::[]
 
 == Introducing Binary Options
 
@@ -11,15 +16,20 @@ In general, this leads to the conclusions that "...because these platforms opera
 
 So, in contrast to usual financial products we have a really comprehensible option, which is mostly valued as high-risk, because there is a real clash of interest if the broker also evaluates the success of the product.
 
-
 (https://en.wikipedia.org/wiki/Binary_option)
 
 == Smart Contracts to the Rescue
 
+So, can smart contracts help here? You bet! The blockchain is trust-less, so you just don't have to trust anyone, be it broker or bucket shop or both, but you can just prove if everything's ok.
+If a smart contract guarantees you that you will get 195% if you predict correctly and 0% if not, this rule has to be implemented in the contract.
+
+== Meeting the Oracle
+
+Given that we can trust the contract, it should be easy to implement a binary option like this:
+
+After deploying the contract, 
 
 
-:toc:
-:toc-placement!:
 
-toc::[]
+
 
