@@ -8,14 +8,12 @@ toc::[]
 
 == Introducing Binary Options
 
-NOTE: das ist eine Note
+This time, we gonna gamble. We will construct a financial product, more specifcally a binary option, http://www.investopedia.com/terms/e/europeanoption.asp[European style], cash-or-nothing. +
+This is a high risk product which is http://www.investopedia.com/terms/b/binary-option.asp["most likely traded over the Internet on platforms existing outside of regulations"], so https://en.wikipedia.org/wiki/Binary_option["the customer is betting against the broker, who is acting as a bucket shop."]
 
-This time, we gonna gamble. We will construct a financial product, more specifcally a binary option (http://www.investopedia.com/terms/e/europeanoption.asp[European style], cash-or-nothing).
-This is a high risk product which is http://www.investopedia.com/terms/b/binary-option.asp["...most likely traded over the Internet on platforms existing outside of regulations..."], so https://en.wikipedia.org/wiki/Binary_option["...the customer is betting against the broker, who is acting as a bucket shop."]
+In general, this means that https://en.wikipedia.org/wiki/Binary_option["because these platforms operate outside of regulations, investors are at greater risk of fraud"] and http://www.investopedia.com/terms/b/binary-option.asp["manipulation of price data to cause customers to lose is common"].
 
-In general, this leads to the conclusions that https://en.wikipedia.org/wiki/Binary_option["...because these platforms operate outside of regulations, investors are at greater risk of fraud"] and http://www.investopedia.com/terms/b/binary-option.asp["manipulation of price data to cause customers to lose is common"].
-
-So, in contrast to usual financial products we have a really comprehensible option, which is mostly valued as high-risk, because there is a real clash of interest if the broker also evaluates the success of the product.
+So, in contrast to common regulated financial products we have a really comprehensible option, which is mostly valued as high-risk, just because there is a real clash of interest if the broker also evaluates the stock against the strike price and is assumed to manipulate this evaluation.
 
 == Smart Contracts to the Rescue
 
