@@ -10,11 +10,11 @@ toc::[]
 
 This time, we gonna gamble. We will construct a financial product, more specifcally: a https://en.wikipedia.org/wiki/Binary_option[binary option], European style, cash-or-nothing.
 
-Binary options are "a type of option in which the payoff is structured to be either a fixed amount of compensation if the option expires in the money, or nothing at all if the option expires out of the money" [http://www.investopedia.com/terms/b/binary-option.asp[1]], therefore cash-or-nothing. European style means the option "can only be exercised at the end of its life, at its maturity" [http://www.investopedia.com/terms/b/binary-option.asp[1]].
+Binary options are "a type of option in which the payoff is structured to be either a fixed amount of compensation if the option expires in the money, or nothing at all if the option expires out of the money" [http://www.investopedia.com/terms/b/binary-option.asp[1]], therefore cash-or-nothing. European style means the option "can only be exercised at the end of its life, at its maturity" [http://www.investopedia.com/terms/e/europeanoption.asp[2]].
  
-This is a high risk product which is "most likely traded over the Internet on platforms existing outside of regulations" [http://www.investopedia.com/terms/b/binary-option.asp[1]], so "the customer is betting against the broker, who is acting as a bucket shop." [https://en.wikipedia.org/wiki/Binary_option[2]]
+This is a high risk product which is "most likely traded over the Internet on platforms existing outside of regulations" [http://www.investopedia.com/terms/b/binary-option.asp[1]], so "the customer is betting against the broker, who is acting as a bucket shop." [https://en.wikipedia.org/wiki/Binary_option[3]]
 
-In general, this means that "because these platforms operate outside of regulations, investors are at greater risk of fraud" [https://en.wikipedia.org/wiki/Binary_option[2]] and "manipulation of price data to cause customers to lose is common" [http://www.investopedia.com/terms/b/binary-option.asp[1]].
+In general, this means that "because these platforms operate outside of regulations, investors are at greater risk of fraud" [https://en.wikipedia.org/wiki/Binary_option[3]] and "manipulation of price data to cause customers to lose is common" [http://www.investopedia.com/terms/b/binary-option.asp[1]].
 
 So, in contrast to common regulated financial products we have a really comprehensible option, which is mostly valued as high-risk, because there is a real clash of interests if the broker also evaluates the stock against the strike price and thus is highly motivated to manipulate this evaluation.
 
