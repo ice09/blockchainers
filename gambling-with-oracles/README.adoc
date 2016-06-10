@@ -1,15 +1,25 @@
-= Document Title
+= Gambling with Oracles
+
+Howto create a provably-fair high risk financial product with live data feeds provided by oracles.
+
+== Introducing Binary Options
+
+This time, we gonna gamble. We will construct a financial product, more specifcally a binary option (European style [http://www.investopedia.com/terms/e/europeanoption.asp], cash-or-nothing).
+This is a high risk product which is "...most likely traded over the Internet on platforms existing outside of regulations..." (http://www.investopedia.com/terms/b/binary-option.asp), so "...the customer is betting against the broker, who is acting as a bucket shop."
+
+In general, this leads to the conclusions that "...because these platforms operate outside of regulations, investors are at greater risk of fraud" and "manipulation of price data to cause customers to lose is common".
+
+So, in contrast to usual financial products we have a really comprehensible option, which is mostly valued as high-risk, because there is a real clash of interest if the broker also evaluates the success of the product.
+
+
+(https://en.wikipedia.org/wiki/Binary_option)
+
+== Smart Contracts to the Rescue
+
+
+
 :toc:
 :toc-placement!:
 
 toc::[]
 
-== Here we run.
-include::src/binary.sol[]
-
-[source,ruby]
-----
-puts ['AsciiDoc', 'GitHub', 'AsciiDoc on GitHub'].map {|item|
-  "I use #{item}!"
-} * "\n"
-----
