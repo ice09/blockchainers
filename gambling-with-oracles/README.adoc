@@ -1,5 +1,5 @@
 = Gambling with Oracles
-:toc:
+:toc: macro
 :toc-placement!:
 How to create a provably-fair high risk financial product with live data feeds provided by oracles.
 
