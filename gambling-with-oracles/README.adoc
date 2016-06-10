@@ -14,7 +14,7 @@ Binary options are "a type of option in which the payoff is structured to be eit
  
 This is a high risk product which is "most likely traded over the Internet on platforms existing outside of regulations" [http://www.investopedia.com/terms/b/binary-option.asp[1]], so "the customer is betting against the broker, who is acting as a bucket shop." [https://en.wikipedia.org/wiki/Binary_option[3]]
 
-In general, this means that "because these platforms operate outside of regulations, investors are at greater risk of fraud" [https://en.wikipedia.org/wiki/Binary_option[3]] and "manipulation of price data to cause customers to lose is common" [http://www.investopedia.com/terms/b/binary-option.asp[1]].
+In general, this means that "because these platforms operate outside of regulations, investors are at greater risk of fraud" [http://www.investopedia.com/terms/b/binary-option.asp[1]] and "manipulation of price data to cause customers to lose is common" [http://www.investopedia.com/terms/b/binary-option.asp[1]].
 
 So, in contrast to common regulated financial products we have a really comprehensible option, which is mostly valued as high-risk, because there is a real clash of interests if the broker also evaluates the stock against the strike price and thus is highly motivated to manipulate this evaluation.
 
@@ -27,4 +27,17 @@ If a smart contract guarantees you that you will get 195% if you predict correct
 
 Given that we can trust the contract, it should be easy to implement a binary option like this:
 
-After deploying the contract, 
+After deploying the contract, you have 1 hour to call or put Ether on this condition: after this 1 hour offering period, it's rien ne va plus, no more call or puts are possible. At this point of time, the current value of the DAX is stored. After 1 hour the DAX is evaluated against the stored DAX value.
+
+If
+* the value is above or equal to the stored value, all calls are returned 195% of their investment, all puts lose all invested money
+* the value is above or equal to the stored value, all puts are returned 195% of their investment, all calls lose all invested money
+
+Sounds simple? It is!
+
+However, there is one problem. You can easily prove that the contract actually implements the described rules, but there are two problems: how does the contract know the DAX value? Contracts in Ethereum intetntionally cannot connect to the outside world, therefore the outside world has to call the contract and provide the necessary data. +
+
+== Let's gonna oraclize.it
+
+
+* 
