@@ -8,7 +8,7 @@ toc::[]
 
 == Introducing Binary Options
 
-This time, we gonna gamble. We will construct a financial product, more specifcally a binary option, European style, cash-or-nothing.
+This time, we gonna gamble. We will construct a financial product, more specifcally: a https://en.wikipedia.org/wiki/Binary_option[binary option], European style, cash-or-nothing.
 
 Binary options are "a type of option in which the payoff is structured to be either a fixed amount of compensation if the option expires in the money, or nothing at all if the option expires out of the money" [http://www.investopedia.com/terms/b/binary-option.asp[1]], therefore cash-or-nothing. European style means the option "can only be exercised at the end of its life, at its maturity" [http://www.investopedia.com/terms/b/binary-option.asp[1]].
  
