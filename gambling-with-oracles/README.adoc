@@ -1,6 +1,4 @@
 = Gambling with Oracles
-:toc: macro
-:toc-placement!:
 How to create a provably-fair high risk financial product with live data feeds provided by oracles.
 
 toc::[]
@@ -26,8 +24,3 @@ If a smart contract guarantees you that you will get 195% if you predict correct
 Given that we can trust the contract, it should be easy to implement a binary option like this:
 
 After deploying the contract, 
-
-
-
-
-
