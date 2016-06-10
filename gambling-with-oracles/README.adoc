@@ -1,5 +1,4 @@
 = Gambling with Oracles
-
 :toc:
 :toc-placement!:
 
