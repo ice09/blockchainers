@@ -33,4 +33,4 @@ This is the fundamental requirement, if there is no common goal, there is no nee
 
 To put it contrary: if there already exists a shared technical infrastructure, also organisational processes exist to establish new technology. Given this, there are several great technology products which implement each aspect of the blockchain technology (namely distributed data storage, immutability, security), and most likely even more performant, more mature, with less maintenance and evident responsibilities.
 
-Ok, this is quite abstract and complex, let's find an easy example.
+For more info and an example http://blockchainers.org/index.php/2016/07/10/distributing-business-processes-using-finite-state-machines-in-the-blockchain/[read this].
