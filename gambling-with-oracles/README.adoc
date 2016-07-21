@@ -1,11 +1,12 @@
-    Having disctinct, even competing organisations with a common goal and no shared technical infrastructure represent a perfect use case pattern for blockchain usage.
+ Having disctinct, even competing organisations with a common goal 
+ and no shared technical infrastructure represent a perfect use case 
+ pattern for blockchain usage.
 
-The quest for the holy business use case
+= The quest for the holy business use case
+
+*The corresponding blog post is http://blockchainers.org/index.php/2016/07/10/distributing-business-processes-using-finite-state-machines-in-the-blockchain/[here], the following is just an abstract and a README for the contract code.*
 
 As many blockchain enthusiasts we are constantly searching for use cases for establishing Distributed Ledger Technology (DLT) or even real blockchain technology in enterprises as solutions for common business problems.
-
-21666276190_40647d8327_z
-    [Business *]
 
 This turns out to be difficult, since each single aspect of this technology is already solved by several - established and well known - products. 
 
@@ -15,173 +16,21 @@ For these type of use cases the other technologies, even though being more matur
 
 Our definition is the use case pattern is:
 
-Several distinct, competing organisations have a common goal and don't share technical infrastructure.
+ Several distinct, competing organisations have a common goal 
+ and don't share technical infrastructure.
 
-distinct, even competing organisations
+== distinct, even competing organisations
 
 Distinct organisations are not related to each other and therefore have no existing technical or organisational processes. To pursue a common goal, these processes would have to be established first, which is costly and time-consuming.
 
-5882566863_ce0ccf745d_z
-    [Competing teams *]
-
 The second aspect, competition, implies that there is no mutual trust. Obviously, this aspect is a crucial one. Blockchain technology might even make sense if just the other aspects of the pattern match, but it only is a perfect fit if this aspect is important, since the blockchain itself is inherently trust-less.
-common goal
+
+== common goal
 
 This is the fundamental requirement, if there is no common goal, there is no need to establish any collaboration. It is important to note, that the common goal is most likely not related to the core competence of the organisations, but to some crosscutting concerns, which have to be addressed by all organisations, but are just cost factors.
-no existing shared technical infrastructure
+
+== no existing shared technical infrastructure
 
 To put it contrary: if there already exists a shared technical infrastructure, also organisational processes exist to establish new technology. Given this, there are several great technology products which implement each aspect of the blockchain technology (namely distributed data storage, immutability, security), and most likely even more performant, more mature, with less maintenance and evident responsibilities.
 
 Ok, this is quite abstract and complex, let's find an easy example.
-...want a securities account with your new account?
-
-There is one universal retail bank, FriendlyBank, which wants people to open accounts. And there are three deposit banks, FriendlyDeposit, EasyDeposit and NiceDeposit. There is also the Regulator, who must be able to audit all transactions between the parties.
-
-Requirement
-common goal: make money
-
-The common goal of universal and deposit banks is to open accounts. The universal bank can be intermediary to deposit account opening, so you can open a securities account at one of the three deposit banks with your new account at FriendlyBank. This way, it is a win-win-situation for both parties, the intermediary gets commissions, the deposit banks get new customers.
-
-FriendlyBank and FriendlyDeposit are related to each other, they have the same ownership structure, but are separated entities. Since the deposit banks are in competition with each other, the other deposit banks besides FriendlyBank want to be sure that not very valuable customers are transferred to FriendlyDeposit or the deposit account opening is "accidentally forgotten", if not FriendlyDeposit is chosen.
-Since the parties do not really trust each other, a trust-less (ie. no trust necessary) solution is needed.
-the wonderful world of finance IT today
-
-As we said, the depicted scenario exists quite often. Also, technical "solutions" for these scenarios exist.
-
-They look similar to this one:
-
-Flatfilesolution_crop
-
-We wan't go in detail what all this means, but to become trust-less, as well as assure that the data is in sync in each organisation, a lot has to be implemented and still, shortcomings of these solutions are quite common:
-
-    reconciliation processes are always necessary, but still, due to missing transaction support in flat file exchange, which is almost always chosen as the "simplest" integration pattern, errors occur.
-    adapters have to be built for each party, so there will soon exist a many-to-many problem.
-    special adapters have to be built for regulators.
-    crosscutting concerns have to be implemented: security, authentication, auditing, transaction support
-
-Compared to a natural solution in the blockchain
-
-Below is the blockchain solution, it fits naturally and implements all requirements.bcsample
-Abstracting from the use case
-
-Why is this solution matching so well, what is the pattern "behind"?
-
-    Different actors change the state of a business process on some event in a transactional way.
-
-2645030_8e2b2269
-    [Old cigarette machine *]
-
-You certainly know this pattern, it is describing a finite state machine, more exactly a distributed, secured by cryptoeconomics finite state machine, which events are transactions.
-
-After all, the blockchain itself is a state transition system, it somes quite naturally to implement a simple state machine on the Ethereum EVM, it even is mentioned as a common pattern in the Solidity docs.
-
-
-Approaching the finite state machine
-
-How would the organisations collaborate? This could look like this informally:
-
-
-process_v1
-
-or like this (more) formally:
-
-Blockchainsolution_FSM
-
-so we actually can built this state machine and its transitions really easy using the blockchain, here in pseudo-Solidity, derived from the common pattern in the Solidity docs:
-
-contract AccountDepositStateMachine {
-    enum Stages {
-        Init,
-        AccountOpened,
-        DepositOpened,
-        DepositConfirmed,
-        AccountConfirmed
-    }
-
-    Stages public stage = Stages.Init;
-
-    modifier atStage(Stages _stage) {
-        if (stage != _stage) throw;
-        _
-    }
-
-    function nextStage() internal {
-        stage = Stages(uint(stage) + 1);
-    }
-
-    // Order of the modifiers matters here!
-    function openAccount()
-        atStage(Stages.Init)
-        transitionNext
-    {
-        if (msg.sender != FRIENDLY_BANK) throw;
-    }
-
-    function openDeposit()
-        atStage(Stages.AccountOpened)
-        transitionNext
-    {
-        if (msg.sender != FRIENDLY_BANK) throw;
-    }
-
-    function confirmDeposit()
-        atStage(Stages.DepositOpened)
-        transitionNext
-    {
-        if (msg.sender != DEPOSIT_BANK) throw;
-    }
-
-    modifier transitionNext()
-    {
-        _
-        nextStage();
-    }
-}
-
-Great, so that's it, we can build any business process using the blockchain, QED.
-Leaving the ivory tower
-
-As you might guess, it is not that simple. Let's review the actual process:
-
-    Account is opened 
-    Deposit Account is opened
-    Deposit Confirmed
-    Account Confirmed
-
-Ever saw an IT-process in real life? Exactly, it's not like this, not even close. Let's see a more real life example:
-
-    Account is opened
-    An Email is send to whoever feels responsible
-    The Product Owner's Excel has to be updated
-    The new reporting engine must have its data updated, it is runnig with MongoDB, which has to be updated
-    Revision wants to have it's auditing data in their Oracle DB (must use 2PC)
-    ... (ok, you got it already...)
-
-None of the tasks in bold red can be accomplished from the Ethereum blockchain, since calls from "inside" to "outside" are prohibited. Let's hope this will never change, the separation of "inside" and "outside" is essential for the stability and security of the Ethereum blockchain. 
-
-We could use Oracles for this, but it would be a kind of usage which is highly inappropriate for this type of external information retrieval.
-Teaser: "Mastering the Flow: Blending Reality with the Blockchain"
-
-This post is way too long already, so here comes a teaser for two posts next to come: "Mastering the Flow: Blending Reality with the Blockchain"
-
-The idea is really simple: let's just recentralize the business process (we are in eager anticipation for the comments to come...)
-
-But we think this can make sense. Look at the sample above, illustrated as a flow:
-
-nodered
-
-The flow was created with Node-RED, an excellent and highly undervalued tool of IBM Emerging Technologies for flows in IoT. It could be very easily adapted to Ethereum with smart contract access by usage of web3.js, which itself can be integrated in node.js, which is the basis of Node-RED, hence the name.
-
-We make the following assertion:
-
-    More than 80% of all use cases can be realized by a centralized business process engine as a first layer, eg. implemented in Node-RED, and a state machine implemented in the blockchain as a second layer. 
-    The business process engine is the glue between the transactional blockchain state transitions and the secondary business processes.
-
-What do you think of it? Please let us know in the comments, we really appreciate feedback, positive or negative.
-
-And stay tuned for the next episode, we will get to the nitty-gritty there.
-
-images:
-[Business] Business by Christophe BENOIT under CC
-[Competing teams] Competing teams by Denis De Mesmaeker under CC
-[Old cigarette machine] Old cigarette machine by Walter Baxter under CC
